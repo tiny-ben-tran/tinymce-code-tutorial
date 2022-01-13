@@ -100,10 +100,12 @@ describe('Part3Ex3Test', () => {
 
   it('operates on the selection', () => {
     const editor = hook.editor();
-
+    TinyAssertions.assertContentPresence(editor, {span: 0});
     // TODO: move the selection to around the words "a bit of"
+    TinySelections.setSelection(editor, [0,0], "Here is ".length, [0,0], "Here is a bit of".length);
 
     // TODO: use an editor command to underline that content (https://www.tiny.cloud/docs/advanced/editor-command-identifiers/)
+    editor.execCommand("underline");
 
     TinyAssertions.assertContent(editor, [
       '<p>Here is <span style="text-decoration: underline;">a bit of</span> content</p>',
@@ -112,5 +114,6 @@ describe('Part3Ex3Test', () => {
     ].join('\n'));
 
     // TODO: Write an assertion to test your changes (hint: TinyAssertions)
+    TinyAssertions.assertContentPresence(editor, {span: 1});
   });
 });
