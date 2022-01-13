@@ -1,7 +1,6 @@
 import { describe, it } from '@ephox/bedrock-client';
 import { Optional } from '@ephox/katamari';
-import { createElement } from '@ephox/sugar/lib/main/ts/ephox/sugar/api/node/SugarShadowDom';
-import { assert, expect } from 'chai';
+import { assert } from 'chai';
 import * as Ex from '../../../main/ts/Part2Ex3Optional';
 
 describe('Exercise3OptionTest', () => {
@@ -31,7 +30,6 @@ describe('Exercise3OptionTest', () => {
     const child1 = document.createElement('p');
     element.appendChild(child1);
     element.appendChild(document.createElement('span'));
-    assert.isTrue(Ex.getNextSibling(null as any).equals(Optional.none()), 'input is null');
     assert.isTrue(Ex.getNextSibling(element).equals(Optional.none()), 'element with no sibling');
     assert.isTrue(Ex.getNextSibling(child1).equals(Optional.some(element.childNodes[1])), 'there is a sibling')
   });
@@ -57,8 +55,8 @@ describe('Exercise3OptionTest', () => {
   });
 
   it('toValueOrWithFold', () => {
-      assert.deepEqual(Ex.toValueOrWithFold(Optional.some({age: 9})), {age: 9}, 'A valid value');
-      assert.deepEqual(Ex.toValueOrWithFold(Optional.none()), {age: 0}, 'Optional.none() as input');
+    assert.deepEqual(Ex.toValueOrWithFold(Optional.some({age: 9})), {age: 9}, 'A valid value');
+    assert.deepEqual(Ex.toValueOrWithFold(Optional.none()), {age: 0}, 'Optional.none() as input');
   });
 
   it('optionalToArray', () => {

@@ -165,7 +165,7 @@ TODO: use katamari's Fun.constant in your getOrElse and see if it compiles.
 export const getOrElse4 = <A> (oa: Optional<A>, other: A): A => oa.fold(Fun.constant(other), Fun.identity)
 
 // TODO: Write a function that takes an array of numbers and replaces each value with 9.
-export const replaceElementWith9 = (items: number[]) => Optional.from(items).fold(Fun.constant([]), (items) => items.map(Fun.constant(9)));
+export const replaceElementWith9 = (items: number[]) => Arr.map(items, Fun.constant(9));
 
 
 // TODO: In the previous question, what's the *same* between the input and output values

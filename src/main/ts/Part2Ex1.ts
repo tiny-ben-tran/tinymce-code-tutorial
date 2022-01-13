@@ -16,10 +16,10 @@ Let's model the x,y of the top-left and bottom-right corners.
 */
 export interface Boundz {
   // TODO: add fields: x1, y1, x2, y2
-  x1: number;
-  y1: number;
-  x2: number;
-  y2: number;
+  readonly x1: number;
+  readonly y1: number;
+  readonly x2: number;
+  readonly y2: number;
 }
 
 /*

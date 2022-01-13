@@ -41,7 +41,7 @@ export const myFrogs: Frog[] = [
 
 export const runEach2 = (): void => {
   // TODO: Use Arr.each and console.log to print the name of each frog
-  Arr.each(myFrogs, (f: Frog) => console.log(f.name))
+  Arr.each(myFrogs, (f) => console.log(f.name))
 };
 
 /*
@@ -66,7 +66,7 @@ export const runMap2 = (xs: number[]): string[] =>
 
 // TODO: Return the frog's names and check it by running
 // yarn bedrock-auto -b chrome-headless -f src/test/ts/Exercise2ArrayFunctionsTest.ts
-export const frogNames = (fs: Frog[]): string[] => Arr.map(fs, (f: Frog) => f.name);
+export const frogNames = (fs: Frog[]): string[] => Arr.map(fs, (f) => f.name);
 
 // TODO: Return the frog's ages
 // TODO: Write a test for this in Exercise2ArrayFunctionsTest
@@ -83,10 +83,10 @@ export const evens = (xs: number[]): number[] =>
 
 // TODO: Write a function that returns all the frogs that ribbit
 // TODO: Run the provided test to check your answer.
-export const ribbitting = (frogs: Frog[]): Frog[] => Arr.filter(frogs, (f: Frog) => f.ribbits === true)
+export const ribbitting = (frogs: Frog[]): Frog[] => Arr.filter(frogs, (f) => f.ribbits);
 
 // TODO: Write a function that returns all frogs aged 8 or older
-export const olderFrogs = (frogs: Frog[]): Frog[] => Arr.filter(frogs, (f: Frog) => f.age >= 8)
+export const olderFrogs = (frogs: Frog[]): Frog[] => Arr.filter(frogs, (f) => f.age >= 8);
 
 /*
 5. Arr.exists
@@ -109,7 +109,7 @@ This behaviour of running map then flatten is why this function is sometimes cal
 
 TODO: Write a function that takes a list of strings, each string containing a comma-separated list of values, and returns all of the values as an array.
  */
-export const splitCsvs = (csvs: string[]): string[] => Arr.bind(csvs, (s: string) => s.split(','));
+export const splitCsvs = (csvs: string[]): string[] => Arr.bind(csvs, (s) => s.split(','));
 
 /*
 7. Arr.find
