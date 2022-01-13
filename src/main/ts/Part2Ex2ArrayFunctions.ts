@@ -109,7 +109,7 @@ This behaviour of running map then flatten is why this function is sometimes cal
 
 TODO: Write a function that takes a list of strings, each string containing a comma-separated list of values, and returns all of the values as an array.
  */
-export const splitCsvs = (csvs: string[]): string[] => Arr.bind(csvs, (s: string) => s.split(","));
+export const splitCsvs = (csvs: string[]): string[] => Arr.bind(csvs, (s: string) => s.split(','));
 
 /*
 7. Arr.find
