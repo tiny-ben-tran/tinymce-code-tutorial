@@ -3,7 +3,7 @@ import {  describe, it } from '@ephox/bedrock-client';
 import {assert} from "chai";
 import { TinyAssertions, TinyDom, TinyHooks } from '@ephox/mcagar';
 import { Arr, Fun, Optional } from "@ephox/katamari";
-import * as Ex from "../../main/ts/Part2Ex4FP";
+import * as Ex from "../../../main/ts/Part2Ex4FP";
 
 describe("Exercise 4 FP", () => {
     it("map identity over array", () => {
