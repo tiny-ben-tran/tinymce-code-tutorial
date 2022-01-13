@@ -56,23 +56,24 @@ describe('Part3Ex1Test', () => {
     UiFinder.exists(container, 'button[title="Bold"]');
   });
 
-  it('has content like an editor', () => {
-    const editor = hook.editor();
+    it('has content like an editor', () => {
+      const editor = hook.editor();
 
-    editor.setContent(/* TODO */ "<p>Hello world</p>");
+      editor.setContent("<p>Hello world</p><p>Hello again</p><div><span class='empty'>Goodbye</span></div>");
+      
 
-    /*
-    Another useful module from mcagar, TinyAssertions is full of ways to make
-    sure that the content inside the editor is what you want it to be. Content
-    presence takes an object where the keys are CSS selectors, and the values
-    are numbers saying how many elements should match that selector inside the
-    editor.
+      /*
+      Another useful module from mcagar, TinyAssertions is full of ways to make
+      sure that the content inside the editor is what you want it to be. Content
+      presence takes an object where the keys are CSS selectors, and the values
+      are numbers saying how many elements should match that selector inside the
+      editor.
 
-    TODO: Edit the setContent call above to make this test pass.
-     */
-    TinyAssertions.assertContentPresence(editor, {
-      p: 2,
-      span: 1
+      TODO: Edit the setContent call above to make this test pass.
+      */
+      TinyAssertions.assertContentPresence(editor, {
+        p: 2,
+        span: 1,
+      });
     });
-  });
 });
