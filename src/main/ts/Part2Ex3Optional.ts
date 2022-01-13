@@ -42,12 +42,8 @@ export const isString = (s: string): Optional<string> => s.length > 0 ? Optional
 // You can use a regex.
 // Have a look at Exercise3OptionTest.ts for example input. Make sure the tests pass.
 export const getProtocol = (url: string): Optional<string> => {
-  let result = null;
-  if (url) {
-    result = url.match(/^http(s)?/);
-  }
-  
-  return result ? Optional.some(result[0]) : Optional.none();
+  let regexMatch = url.match(/^http(s)?:\/\//);
+  return regexMatch !== null ? Optional.some(regexMatch[0].replace('://', '')) : Optional.none();
 };
 
 /*

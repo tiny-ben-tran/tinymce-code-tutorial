@@ -10,6 +10,8 @@ describe('Exercise3OptionTest', () => {
     assert.isTrue(Ex.getProtocol('frog.com').isNone(), 'no protocol should be found');
     assert.isTrue(Ex.getProtocol('://frog.com').isNone(), 'no protocol should be found');
     assert.isTrue(Ex.getProtocol('3ttp://frog.com').isNone(), 'malformed protocol should not be registered');
+    assert.isTrue(Ex.getProtocol('httpsimple.com').isNone(), 'no protocal should be found');
+    assert.isTrue(Ex.getProtocol('http:/simple.com').isNone(), 'no protocal should be found');
   });
 
   it('toPositiveInteger', () => {
