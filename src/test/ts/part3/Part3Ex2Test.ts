@@ -114,6 +114,9 @@ describe('Part3Ex3Test', () => {
     ].join('\n'));
 
     // TODO: Write an assertion to test your changes (hint: TinyAssertions)
-    TinyAssertions.assertContentPresence(editor, {span: 1});
+    // TinySelections.setSelection(editor, [0, 0], 5, [0], 3);
+    // selection includes span with text decoration style
+    TinyAssertions.assertSelection(editor, [0, 1, 0], 0, [0], 2)
+    assert.equal(editor.selection.getContent(), '<span style="text-decoration: underline;">a bit of</span>');
   });
 });
