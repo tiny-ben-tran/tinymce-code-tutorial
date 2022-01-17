@@ -21,7 +21,15 @@
           tools: { title: 'Tools', items: 'spellchecker' },
           table: { title: 'Table', items: 'inserttable | cell row column | tableprops deletetable' },
         },
-        toolbar: 'undo redo | bold italic | alignleft aligncenter alignright alignjustify | fontselect fontsizeselect formatselect | bullist numlist outdent indent | link image | fullscreen wordcount code print'
+        toolbar: 'undo redo | bold italic | alignleft aligncenter alignright alignjustify | fontselect fontsizeselect formatselect | bullist numlist outdent indent | link image | fullscreen wordcount code print | customToolBarButton',
+        setup: function (editor) {
+          editor.ui.registry.addButton('customToolBarButton', {
+            text: 'My Custom Button',
+            onAction: function () {
+              alert('Button clicked!');
+            }
+        });
+  }
       });
 
       
