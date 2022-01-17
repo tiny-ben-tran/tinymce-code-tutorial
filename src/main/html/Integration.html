@@ -26,11 +26,34 @@
           editor.ui.registry.addButton('customToolBarButton', {
             text: 'My Custom Button',
             onAction: function () {
-              alert('Button clicked!');
+              // alert('Button clicked!');
+              tinymce.activeEditor.windowManager.open({
+                title: 'Custom dialog',
+                body: {
+                  type: 'panel',
+                  items: [
+                    {
+                      type: 'input',
+                      name: 'customInput',
+                      label: 'Please enter your fruit'
+                    }
+                  ]
+                },
+                buttons: [
+                  {
+                    type: 'submit',
+                    text: 'Submit'
+                  }
+                ],
+                onSubmit: function (dialogApi) {
+                  editor.execCommand('mceInsertContent', false, `<span style="color:red">${dialogApi.getData().customInput}</span>`);
+                  dialogApi.close();
+                }
+              });
             }
-        });
-  }
-      });
+          });
+        }
+    });
 
       
   </script>
@@ -42,6 +65,6 @@
   3. Didn't expect that some menu items are only available via plugins. Ok -- Found it after looking into a plugin
   4. From the perspective of a person whose english is a secondary language, sometimes, it is hard to understand the language used in the doc
   5. It would be nice to show the icon associated with each option in this list https://www.tiny.cloud/docs/advanced/available-toolbar-buttons/#thecoretoolbarbuttons
-  6. 
+  6. https://v4.mui.com/components/buttons/ is good at demonstrating the usage of their UI components. We should have something like that for (https://www.tiny.cloud/docs/ui-components/dialog/)
 -->
 </html>
