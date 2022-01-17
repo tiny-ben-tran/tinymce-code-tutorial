@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Integration</title>
+  <script src="https://cdn.tiny.cloud/1/b6r7yu1n19ibkha4z0s4gdvt0l7z2mc3dzlnc780ep0uuzks/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+</head>
+<body>
+  <textarea class='classic'></textarea>
+  <script>
+    tinymce.init({
+        selector: '.classic',
+        content_style: 'body {font-size: 14pt;}',
+        plugins: 'table spellchecker fullscreen code print link image lists advlist wordcount',
+        menubar: 'file edit view insert format tools table',
+        menu: {
+          file: { title: 'File', items: 'newdocument restoredraft | preview | print ' },
+          edit: { title: 'Edit', items: 'undo redo | cut copy paste | selectall | searchreplace' },
+          view: { title: 'View', items: 'spellchecker | preview fullscreen' },
+          insert: { title: 'Insert', items: 'inserttable' },
+          format: { title: 'Format', items: 'bold italic underline strikethrough' },
+          tools: { title: 'Tools', items: 'spellchecker' },
+          table: { title: 'Table', items: 'inserttable | cell row column | tableprops deletetable' },
+        },
+        toolbar: 'undo redo | bold italic | alignleft aligncenter alignright alignjustify | fontselect fontsizeselect formatselect | bullist numlist outdent indent | link image | fullscreen wordcount code print'
+      });
+
+      
+  </script>
+</body>
+
+<!--
+  1. Doc is wordy. Sometimes, things can be simplified. Example: https://www.tiny.cloud/docs/configure/editor-appearance/#menu, description/specification of properties can be put in a table
+  2. Should mention the relationship of the values of menu and menu barhttps://www.tiny.cloud/docs/configure/editor-appearance/#menu
+  3. Didn't expect that some menu items are only available via plugins. Ok -- Found it after looking into a plugin
+  4. From the perspective of a person whose english is a secondary language, sometimes, it is hard to understand the language used in the doc
+  5. It would be nice to show the icon associated with each option in this list https://www.tiny.cloud/docs/advanced/available-toolbar-buttons/#thecoretoolbarbuttons
+  6. 
+-->
+</html>
