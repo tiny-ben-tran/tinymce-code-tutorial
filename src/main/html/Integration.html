@@ -54,8 +54,25 @@
           });
         }
     });
-
-      
+  </script>
+  <form method='post' style='margin-top: 146px'>
+    <div class='inlineEditor' style='padding: 6px 0px;'>Click to edit</div>
+  </form>
+  <script>
+    tinymce.init({
+        selector: '.inlineEditor',
+        inline: true,
+        setup: function (editor) {
+          editor.ui.registry.addContextToolbar('imagealignment', {
+            predicate: function (node) {
+              return node.nodeName.toLowerCase() === 'p' && editor.selection.getContent().length > 0;
+            },
+            items: 'bold italic underline',
+            position: 'selection',
+            scope: 'editor'
+          });
+        },
+    });
   </script>
 </body>
 
