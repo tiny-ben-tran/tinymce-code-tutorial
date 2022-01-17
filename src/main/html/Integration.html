@@ -55,8 +55,10 @@
         }
     });
   </script>
-  <form method='post' style='margin-top: 146px'>
-    <div class='inlineEditor' style='padding: 6px 0px;'>Click to edit</div>
+
+  <h1>Inline editor</h1>
+  <form method='post'>
+    <div class='inlineEditor'>Click to edit</div>
   </form>
   <script>
     tinymce.init({
@@ -69,7 +71,7 @@
             icon: 'cancel',
             tooltip: 'strike through and change colour to red',
             onAction: function (_) {
-              editor.insertContent(`&nbsp;<span style="color: red; text-decoration: line-through;">${editor.selection.getContent()}</strong>&nbsp;`);
+              editor.insertContent(`<span style="color: red; text-decoration: line-through;">${editor.selection.getContent()}</span>`);
             }
           });
           // context tool bar
@@ -84,14 +86,16 @@
         },
     });
   </script>
-</body>
 
-<!--
-  1. Doc is wordy. Sometimes, things can be simplified. Example: https://www.tiny.cloud/docs/configure/editor-appearance/#menu, description/specification of properties can be put in a table
-  2. Should mention the relationship of the values of menu and menu barhttps://www.tiny.cloud/docs/configure/editor-appearance/#menu
-  3. Didn't expect that some menu items are only available via plugins. Ok -- Found it after looking into a plugin
-  4. From the perspective of a person whose english is a secondary language, sometimes, it is hard to understand the language used in the doc
-  5. It would be nice to show the icon associated with each option in this list https://www.tiny.cloud/docs/advanced/available-toolbar-buttons/#thecoretoolbarbuttons
-  6. https://v4.mui.com/components/buttons/ is good at demonstrating the usage of their UI components. We should have something like that for (https://www.tiny.cloud/docs/ui-components/dialog/)
--->
+  <h1>All editors</h1>
+  <button onclick='gatherAll()'>Collect all</button>
+  <div id='container' style='border: 1px solid; min-height: 400px;'>
+
+  </div>
+  <script>
+    function gatherAll() {
+      document.getElementById('container').innerHTML = tinymce.editors[0].getContent() + '<br/>' + tinymce.editors[1].getContent();;
+    }
+  </script>
+</body>
 </html>
