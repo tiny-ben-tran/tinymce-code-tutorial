@@ -63,11 +63,21 @@
         selector: '.inlineEditor',
         inline: true,
         setup: function (editor) {
+          // context button
+          editor.ui.registry.addButton('customStrikeButton', {
+            text: 'strike red',
+            icon: 'cancel',
+            tooltip: 'strike through and change colour to red',
+            onAction: function (_) {
+              editor.insertContent(`&nbsp;<span style="color: red; text-decoration: line-through;">${editor.selection.getContent()}</strong>&nbsp;`);
+            }
+          });
+          // context tool bar
           editor.ui.registry.addContextToolbar('imagealignment', {
             predicate: function (node) {
               return node.nodeName.toLowerCase() === 'p' && editor.selection.getContent().length > 0;
             },
-            items: 'bold italic underline',
+            items: 'bold italic underline customStrikeButton',
             position: 'selection',
             scope: 'editor'
           });
