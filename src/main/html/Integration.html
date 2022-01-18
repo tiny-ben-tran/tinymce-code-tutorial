@@ -12,6 +12,9 @@
         content_style: 'body {font-size: 14pt;}',
         plugins: 'table spellchecker fullscreen code print link image lists advlist wordcount autoresize',
         menubar: 'file edit view insert format tools table',
+        formats: {
+          myred: { inline: 'span', styles: { color: 'red' } }
+        },
         menu: {
           file: { title: 'File', items: 'newdocument restoredraft | preview | print ' },
           edit: { title: 'Edit', items: 'undo redo | cut copy paste | selectall | searchreplace' },
@@ -47,7 +50,9 @@
                   }
                 ],
                 onSubmit: function (dialogApi) {
-                  editor.execCommand('mceInsertContent', false, `<span style="color:red">${dialogApi.getData().customInput}</span>`);
+                  editor.formatter.apply('myred');
+                  editor.execCommand('mceInsertContent', false, dialogApi.getData().customInput);
+                  editor.formatter.remove('myred');
                   dialogApi.close();
                 }
               });
