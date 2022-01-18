@@ -105,7 +105,7 @@
   </div>
   <script>
     function gatherAll() {
-      document.getElementById('container').innerHTML = tinymce.editors[0].getContent() + '<br/>' + tinymce.editors[1].getContent();;
+      document.getElementById('container').innerHTML = tinymce.get(0).getContent() + '<br/>' + tinymce.get(1).getContent();;
     }
   </script>
 </body>
