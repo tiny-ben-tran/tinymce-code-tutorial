@@ -40,7 +40,7 @@ describe('Part3Ex3Test', () => {
     your node is a Text, then the offset is going to tell you how many
     characters into the text your selection endpoint is.
 
-    This concept is summed up really nicely by the builtin "Range" API exported
+    This concept is summed up really nicely by the builtin 'Range' API exported
     by the browser. Let's create a Range object, and make sure it works.
      */
     // TinyMCE exposes the built-in JS document.createRange() through the `dom` API
@@ -50,9 +50,9 @@ describe('Part3Ex3Test', () => {
     const contentBody = TinyDom.body(editor);
     // Let's get the <p>And some <strong>bolded</strong> content</p>
     const paragraph = Traverse.child(contentBody, 1).getOrDie('Unable to find second child of editor body');
-    // And then get the <strong>bolded</strong> (child 0 would be the text node "And some ")
+    // And then get the <strong>bolded</strong> (child 0 would be the text node 'And some ')
     const strong = Traverse.child(paragraph, 1).getOrDie('Unable to find second child of paragraph');
-    // And finally let's get the text node "bolded"
+    // And finally let's get the text node 'bolded'
     const text = Traverse.child(strong, 0).getOrDie('Unable to find text inside strong element');
 
     range.setStart(text.dom, 0);
@@ -72,9 +72,9 @@ describe('Part3Ex3Test', () => {
     const contentBody = TinyDom.body(editor);
     // Let's get the <p>And some <strong>bolded</strong> content</p>
     const paragraph = Traverse.child(contentBody, 1).getOrDie('Unable to find second child of editor body');
-    // And then get the <strong>bolded</strong> (child 0 would be the text node "And some ")
+    // And then get the <strong>bolded</strong> (child 0 would be the text node 'And some ')
     const strong = Traverse.child(paragraph, 1).getOrDie('Unable to find second child of paragraph');
-    // And finally let's get the text node "bolded"
+    // And finally let's get the text node 'bolded'
     const text = Traverse.child(strong, 0).getOrDie('Unable to find text inside strong element');
 
     And here's how you'd do all of this with an agar API.
@@ -84,7 +84,7 @@ describe('Part3Ex3Test', () => {
     // Note that Cursors.follow only deals with DOM nodes, not offsets, and it uses the same node
     // for both the selection start and end node
     /*
-    Each number in this array represents a call to "Traverse.child(..., <number>)"
+    Each number in this array represents a call to 'Traverse.child(..., <number>)'
     in a loop, walking down step by step from the container to the node you want to end on.
 
     Then, to make things even simpler, we can use mcagar to do all of this
@@ -100,10 +100,12 @@ describe('Part3Ex3Test', () => {
 
   it('operates on the selection', () => {
     const editor = hook.editor();
-
-    // TODO: move the selection to around the words "a bit of"
+    TinyAssertions.assertContentPresence(editor, {span: 0});
+    // TODO: move the selection to around the words 'a bit of'
+    TinySelections.setSelection(editor, [0,0], 'Here is '.length, [0,0], 'Here is a bit of'.length);
 
     // TODO: use an editor command to underline that content (https://www.tiny.cloud/docs/advanced/editor-command-identifiers/)
+    editor.execCommand('underline');
 
     TinyAssertions.assertContent(editor, [
       '<p>Here is <span style="text-decoration: underline;">a bit of</span> content</p>',
@@ -112,5 +114,9 @@ describe('Part3Ex3Test', () => {
     ].join('\n'));
 
     // TODO: Write an assertion to test your changes (hint: TinyAssertions)
+    // TinySelections.setSelection(editor, [0, 0], 5, [0], 3);
+    // selection includes span with text decoration style
+    TinyAssertions.assertSelection(editor, [0, 1, 0], 0, [0], 2)
+    assert.equal(editor.selection.getContent(), '<span style="text-decoration: underline;">a bit of</span>');
   });
 });
