@@ -10,7 +10,7 @@
     tinymce.init({
         selector: '.classic',
         content_style: 'body {font-size: 14pt;}',
-        plugins: 'table spellchecker fullscreen code print link image lists advlist wordcount',
+        plugins: 'table spellchecker fullscreen code print link image lists advlist wordcount autoresize',
         menubar: 'file edit view insert format tools table',
         menu: {
           file: { title: 'File', items: 'newdocument restoredraft | preview | print ' },
@@ -22,6 +22,7 @@
           table: { title: 'Table', items: 'inserttable | cell row column | tableprops deletetable' },
         },
         toolbar: 'undo redo | bold italic | alignleft aligncenter alignright alignjustify | fontselect fontsizeselect formatselect | bullist numlist outdent indent | link image | fullscreen wordcount code print | customToolBarButton',
+        max_height: 230,
         setup: function (editor) {
           editor.ui.registry.addButton('customToolBarButton', {
             text: 'My Custom Button',
