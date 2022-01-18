@@ -64,12 +64,16 @@
 
   <h1>Inline editor</h1>
   <form method='post'>
-    <div class='inlineEditor'>Click to edit</div>
+    <div class='inlineEditor'></div>
   </form>
   <script>
     tinymce.init({
         selector: '.inlineEditor',
         inline: true,
+        formats: {
+          myred: { inline: 'span', styles: {color: 'red'}}
+        },
+        placeholder: 'click here to edit .....',
         setup: function (editor) {
           // context button
           editor.ui.registry.addButton('customStrikeButton', {
@@ -77,13 +81,14 @@
             icon: 'cancel',
             tooltip: 'strike through and change colour to red',
             onAction: function (_) {
-              editor.insertContent(`<span style="color: red; text-decoration: line-through;">${editor.selection.getContent()}</span>`);
+              editor.formatter.apply('strikethrough');
+              editor.formatter.apply('myred');
             }
           });
           // context tool bar
           editor.ui.registry.addContextToolbar('imagealignment', {
             predicate: function (node) {
-              return node.nodeName.toLowerCase() === 'p' && editor.selection.getContent().length > 0;
+              return !editor.selection.isCollapsed();
             },
             items: 'bold italic underline customStrikeButton',
             position: 'selection',
